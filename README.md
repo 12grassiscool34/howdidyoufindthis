@@ -5,4 +5,6 @@ actually though.
 
 how!
 
-(finding this only counts if you found the github page first)
+(this only applies if you found the github page first)
+
+<a href="./hibob">say hi to bob</a>
