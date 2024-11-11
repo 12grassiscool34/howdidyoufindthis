@@ -1,8 +1,8 @@
 # how did you find this?
-it would be cool if you told me
+it would be cool if you told me.
 
-actually though
+actually though.
 
-how
+how!
 
 (finding this only counts if you found the github page first)
