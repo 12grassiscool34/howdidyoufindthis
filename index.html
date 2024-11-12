@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>say hi to dot</title>
+    <title>say hi to dot 🐢</title>
     <style>
         body {
             display: flex;
@@ -16,19 +16,50 @@
         }
         .container {
             text-align: center;
+            position: relative;
         }
         .emoji {
             font-size: 5em;
             margin-top: 10px;
+            cursor: pointer;
+        }
+        .counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 1em;
         }
     </style>
-    <link rel="icon" type="image/png" href="turtle.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="turtle.png">
 </head>
 <body>
+    <div class="counter" id="counter">i said hi to dot 0 times</div>
     <div class="container">
         <h2>this is dot</h2>
-        <div class="emoji">🐢</div>
+        <div class="emoji" id="dot">🐢</div>
         <h2>say hi to dot</h2>
     </div>
+
+    <script>
+        let count = parseInt(localStorage.getItem('clickCount')) || 0;
+        const counterElement = document.getElementById('counter');
+        const dot = document.getElementById('dot');
+
+        function updateCounter() {
+            counterElement.textContent = `i said hi to dot ${count} times`;
+            localStorage.setItem('clickCount', count);
+        }
+
+        dot.addEventListener('click', () => {
+            count++;
+            updateCounter();
+        });
+
+        updateCounter();
+    </script>
 </body>
 </html>
