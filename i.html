@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>say hi to dot</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            user-select: none;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .emoji {
+            font-size: 5em;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 1em;
+            user-select: none;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="turtle.png">
+</head>
+<body>
+    <div class="counter" id="counter">i said hi to dot 0 times</div>
+    <div class="container">
+        <h2>this is dot</h2>
+        <div class="emoji" id="dot">🐢</div>
+        <h2>say hi to dot</h2>
+    </div>
+
+    <script>
+        let count = parseInt(localStorage.getItem('clickCount')) || 0;
+        const counterElement = document.getElementById('counter');
+        const dot = document.getElementById('dot');
+        let pointsPerClick = 1;
+
+        function updateCounter() {
+            counterElement.textContent = `i said hi to dot ${count} times`;
+            localStorage.setItem('clickCount', count);
+        }
+
+        dot.addEventListener('click', () => {
+            count += pointsPerClick;
+            updateCounter();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                dot.click();
+            } else if (event.key === 'i') {
+                togglePoints();
+            }
+        });
+
+        function togglePoints() {
+            pointsPerClick = pointsPerClick === 1 ? 100 : 1;
+        }
+
+        updateCounter();
+    </script>
+</body>
+</html>
